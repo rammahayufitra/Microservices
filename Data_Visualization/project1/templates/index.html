@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>FlaskApp</title>
+</head>
+<body>
+    <table class="table table-dark">
+        <tr class="bg-info">
+            <th>nama</th>
+            <th>umur</th>
+            <th>pekerjaan</th>
+        </tr>
+        <tbody id="myTable">
+        </tbody>
+    </table>
+
+    <script>
+        var table = document.getElementById("myTable");
+        let data = JSON.parse('{{user | tojson | safe}}')
+        for (let i = 0; i< data.length; i++){
+            let row = `<tr>
+                            <th>${data[i].nama}</th>
+                            <th>${data[i].umur}</th>
+                            <th>${data[i].pekerjaan}</th>
+                      </tr>`
+            table.innerHTML += row;
+        }
+    </script>
+</body>
+</html>
