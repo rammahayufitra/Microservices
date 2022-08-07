@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 style="text-align:center">Monitoring Hardware</h1>
+            <div><canvas id="myChart" style="width:100%;max-width:800px"></canvas></div>
+    </div>
+
+    <script>
+        let data = JSON.parse('{{data| tojson | safe}}')
+
+        var xValues = ["RAM Usage", "CPU Usage", "Virtual Memory Usage", "Swap Memory Usage", "Storage Usage"];
+        var yValues = [data[0]['ram_usage'], data[0]['cpu_usage'], data[0]['virtual_memory'], data[0]['swap_memory'], data[0]['disk_usage']];
+        var barColors = [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(255, 159, 64, 0.2)',
+            'rgba(255, 205, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+        ];
+
+        new Chart("myChart", {
+        type: "horizontalBar",
+        data: {
+            labels: xValues,
+            datasets: [{
+            backgroundColor: barColors,
+            data: yValues
+            }]
+        },
+        options: {
+            legend: {display: false},
+            title: {
+            display: true,
+            text: ""
+            }
+        }
+        });
+
+        // const config = {
+        //     type: 'bar',
+        //     data,
+        //     options: {
+        //         indexAxis: 'y',
+        //     }
+        //     };
+
+        // const labels = {['a', 'b', 'c', 'd', 'e', 'f']};
+        // const data = {
+        // labels: labels,
+        // datasets: [{
+        //     axis: 'y',
+        //     label: 'My First Dataset',
+        //     data: [65, 59, 80, 81, 56, 55, 40],
+        //     fill: false,
+        //     backgroundColor: [
+        //     'rgba(255, 99, 132, 0.2)',
+        //     'rgba(255, 159, 64, 0.2)',
+        //     'rgba(255, 205, 86, 0.2)',
+        //     'rgba(75, 192, 192, 0.2)',
+        //     'rgba(54, 162, 235, 0.2)',
+        //     'rgba(153, 102, 255, 0.2)',
+        //     'rgba(201, 203, 207, 0.2)'
+        // }]}
+    </script>
+</body>
+
+</html>
