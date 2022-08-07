@@ -21,6 +21,7 @@ alur kerja program:</br>
 (3). client akan memparse data json dari server<br>
 (4). data yang diparse di diolah dengan memanfaatkan ChartJS<br> 
 (5). ketika browser di reload maka data akan berubah sesuai dengan penggunan hardware 
+(6). Video hasil dapat dilihat di link ini: https://www.linkedin.com/feed/update/urn:li:activity:6962076567464288256/
 
 cara melakukan running aplikasi:<br>
 python3 main.py</br> 
