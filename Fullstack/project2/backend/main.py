@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from shutil import disk_usage
 from flask import Flask, render_template 
 import psutil
@@ -43,3 +44,16 @@ def barChart():
 
 
 app.run()
+=======
+from flask import Flask 
+
+app = Flask(__name__)
+
+@app.route('/home')
+def home():
+    data = {"nama":"ramma hayu fitra saleh","usia":"34", "pekerjaan":"software engineer"}
+    return data
+
+if __name__ == '__main__':
+    app.run()
+>>>>>>> 1936c5651b7ef10e71aca19e60425e3b7cebd297
