@@ -3,71 +3,86 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
 <head>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-    <div class="container">
-        <h1 style="text-align:center">Monitoring Hardware</h1>
-            <div><canvas id="myChart" style="width:100%;max-width:800px"></canvas></div>
-    </div>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid"> 
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"><strong>Hardware Monitoring</strong></a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="pieChart">PieChart</a></li>
+                <li><a href="barChart"> BarChart</a></li>
+                <!-- <li><a href="#">Page 3</a></li> -->
+            </ul>
+        </div> 
+    </nav>
+    <h1 style="text-align:center">Hardware Monitoring</h1>
+    <div><canvas id="myChart" style="width:100%;max-width:800px"></canvas></div>
 
     <script>
-        let data = JSON.parse('{{data| tojson | safe}}')
-
-        var xValues = ["RAM Usage", "CPU Usage", "Virtual Memory Usage", "Swap Memory Usage", "Storage Usage"];
-        var yValues = [data[0]['ram_usage'], data[0]['cpu_usage'], data[0]['virtual_memory'], data[0]['swap_memory'], data[0]['disk_usage']];
-        var barColors = [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(255, 159, 64, 0.2)',
-            'rgba(255, 205, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-        ];
-
-        new Chart("myChart", {
-        type: "horizontalBar",
-        data: {
-            labels: xValues,
-            datasets: [{
-            backgroundColor: barColors,
-            data: yValues
-            }]
-        },
-        options: {
-            legend: {display: false},
-            title: {
-            display: true,
-            text: ""
-            }
+        function delay(delayInms) {
+            return new Promise(resolve => {
+                setTimeout(() => {
+                    resolve(2);
+                }, delayInms);
+            });
         }
-        });
 
-        // const config = {
-        //     type: 'bar',
-        //     data,
-        //     options: {
-        //         indexAxis: 'y',
-        //     }
-        //     };
+        async function sample() {
+            console.log('a');
+            console.log('waiting...')
 
-        // const labels = {['a', 'b', 'c', 'd', 'e', 'f']};
-        // const data = {
-        // labels: labels,
-        // datasets: [{
-        //     axis: 'y',
-        //     label: 'My First Dataset',
-        //     data: [65, 59, 80, 81, 56, 55, 40],
-        //     fill: false,
-        //     backgroundColor: [
-        //     'rgba(255, 99, 132, 0.2)',
-        //     'rgba(255, 159, 64, 0.2)',
-        //     'rgba(255, 205, 86, 0.2)',
-        //     'rgba(75, 192, 192, 0.2)',
-        //     'rgba(54, 162, 235, 0.2)',
-        //     'rgba(153, 102, 255, 0.2)',
-        //     'rgba(201, 203, 207, 0.2)'
-        // }]}
+            testingBarChart();
+
+            let delayres2 = await delay(2000);
+            window.location.reload();
+            console.log('b');
+
+        }
+
+        sample()
+
+        function testingBarChart() {
+            let data = JSON.parse('{{data| tojson | safe}}')
+            var xValues = ["RAM Usage", "CPU Usage", "Virtual Memory Usage", "Swap Memory Usage", "Storage Usage"];
+            var yValues = [data[0]['ram_usage'], data[0]['cpu_usage'], data[0]['virtual_memory'], data[0]['swap_memory'], data[0]['disk_usage']];
+            var barColors = [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 205, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+            ];
+
+            new Chart("myChart", {
+                type: "horizontalBar",
+                data: {
+                    labels: xValues,
+                    datasets: [{
+                        backgroundColor: barColors,
+                        data: yValues
+                    }]
+                },
+                options: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: ""
+                    }
+                }
+            });
+
+
+        }
+
+        testingBarChart()
     </script>
 </body>
 
