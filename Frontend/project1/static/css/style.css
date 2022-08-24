@@ -1,0 +1,33 @@
+.scan {
+    width: 400px;
+    height: 300px;
+    /* border: solid 3px #AAB8BE; */
+  }
+  
+  .scan::after {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 20px;
+    display: block; 
+    background-image: linear-gradient(to bottom,
+      rgba(170, 190, 170, 0),
+      rgba(255, 0,0, 1));
+    animation: scanning 4s linear infinite; 
+  }
+  
+  @keyframes scanning {
+      0% { transform: translate(0px,-300px); } 
+	 
+  }
+
+.scan img {
+	width: 400px; 
+	height:300px;
+}
+
+h1{
+  position: relative;
+  font-size: 100%;
+}
+

@@ -1,4 +1,8 @@
 Microservices
 *.avi
 *.mp4
+<<<<<<< HEAD
 LPRNet_Pytorch
+=======
+*.png
+>>>>>>> dd0a2a3ff7539d4c49c051eb4bfc3adb67b570de
