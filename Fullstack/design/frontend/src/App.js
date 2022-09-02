@@ -1,31 +1,46 @@
 import './App.css';
-import React, { useState, useEffect } from 'react'
+import React from 'react';
+
+
 
 function App() {
-  const [data, setData] = useState([{}])
-
-  useEffect(() => {
-    fetch("/sarapan").then(
-      res => res.json()
-    ).then(
-      data => {
-        setData(data)
-        console.log(data)
-      }
-    )
-  }, []);
+ 
+ 
   return (
-    <div className="App">
-      <header>
-        <h1>Daftar Members</h1>
-        <ol>
-          <li>{data.sarapan[0]}</li>
-          <li>{data.sarapan[1]}</li>
-          <li>{data.sarapan[2]}</li>
-        </ol>
-      </header>
+    
+    <div className='App'>
+       <div class="grid-container">
+        <div class="grid-item"><img src={'/stream'} className="App-logo" alt="logo"/>
+        <h3>Stream 1</h3>
+        </div>
+        <div class="grid-item"><img src={'/stream'} className="App-logo" alt="logo"/>
+        <h3>Stream 2</h3>
+        </div>
+        <div class="grid-item"><img src={'/stream'} className="App-logo" alt="logo"/>
+        <h3>Stream 3</h3>
+        </div>
+        <div class="grid-item"><img src={'/stream'} className="App-logo" alt="logo"/>
+        <h3>Stream 4</h3>
+        </div>
+        <div class="grid-item"><img src={'/stream'} className="App-logo" alt="logo"/>
+        <h3>Stream 5</h3>
+        </div>
+        <div class="grid-item"><img src={'/stream'} className="App-logo" alt="logo"/>
+        <h3>Stream 6</h3>
+        </div>
+        <div class="grid-item"><img src={'/stream'} className="App-logo" alt="logo"/>
+        <h3>Stream 7</h3>
+        </div>
+        <div class="grid-item"><img src={'/stream'} className="App-logo" alt="logo"/>
+        <h3>Stream 8</h3>
+        </div>
+        <div class="grid-item"><img src={'/stream'} className="App-logo" alt="logo"/>
+        <h3>Stream 9</h3>
+        </div>
+      </div> 
     </div>
+    
+   
   );
 }
-
 export default App;
